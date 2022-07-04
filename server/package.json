@@ -1,0 +1,24 @@
+{
+  "name": "movie_poster",
+  "version": "1.0.0",
+  "description": "Movie Poster API Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AzevedoJason-FS/moviePosters.git"
+  },
+  "keywords": [
+    "API",
+    "Store",
+    "Movies"
+  ],
+  "author": "Jason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AzevedoJason-FS/moviePosters/issues"
+  },
+  "homepage": "https://github.com/AzevedoJason-FS/moviePosters#readme"
+}
