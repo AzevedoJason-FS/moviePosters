@@ -4,7 +4,8 @@
   "description": "Movie Poster API Store",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/AzevedoJason-FS/moviePosters/issues"
   },
-  "homepage": "https://github.com/AzevedoJason-FS/moviePosters#readme"
+  "homepage": "https://github.com/AzevedoJason-FS/moviePosters#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
 }
