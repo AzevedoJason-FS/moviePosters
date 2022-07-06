@@ -1,5 +1,7 @@
 import React from 'react'
-import { RiMovie2Line } from "react-icons/ri";
+import { RiMovie2Line, RiUserReceivedFill } from "react-icons/ri";
+import { BiHeart } from "react-icons/bi";
+import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
@@ -7,13 +9,22 @@ const Nav = () => {
     <div style={styles.navBox}>
         <nav className='nav' style={styles.nav}>
             <div className='title' style={styles.title}>
-                <RiMovie2Line style={styles.icon}/><a href="/" style={styles.a}><h2 style={styles.title_h2}>movieposters.com</h2></a>
+                <RiMovie2Line style={styles.logoIcon}/><a href="/" style={styles.a}><h2 style={styles.title_h2}>movieposters.com</h2></a>
             </div>
             <div className='nav-links' style={styles.navLinks}>
                 <Link to="/original-posters" style={styles.link}> ORIGINAL POSTERS</Link>
                 <Link to="/collections" style={styles.link}> POSTERS</Link>
                 <Link to="/collections" style={styles.link}> COLLECTIONS</Link>
                 <Link to="/framing" style={styles.link}> FRAMING</Link>
+                <Link to="/wishlist" style={styles.link}><BiHeart style={styles.icon}/></Link>
+                <Link to="/search" style={styles.link}> <AiOutlineSearch style={styles.icon}/></Link>
+                <Link to="/search" style={styles.link}> <RiUserReceivedFill style={styles.icon}/></Link>
+                <Link to="/login" style={styles.link}>
+                    <div style={styles.cartIcon}>
+                        <h2 style={styles.cartNumber}>N</h2>
+                    </div>
+                </Link>
+               
             </div>
         </nav>
     </div>
@@ -24,19 +35,38 @@ export default Nav;
 
 const styles = {
     icon: {
-        fontSize: '40px',
-        padding: '0 8px 0 0',
+        fontSize: '30px',
         color: 'white'
     },
 
+    logoIcon: {
+        fontSize: '45px',
+        color: 'white'
+    },
+
+    cartIcon: {
+        width: '40px',
+        height: '40px',
+        background: 'white',
+        borderRadius: '50px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    cartNumber:{
+        fontSize: '1rem',
+        color: 'black'
+    },
+
     navBox: {
-        width: '80%',
-        margin: 'auto',
-        maxWidth: '1920px'
+        background: 'black'
     },
 
     nav: {
-        background: 'red',
+        margin: 'auto',
+        maxWidth: '1500px',
+        background: 'black',
         position: 'relative',
         width: '100%',
         transition: 'transform .25s cubic-bezier(.46, .01, .32,1)',
@@ -72,7 +102,7 @@ const styles = {
     },
 
     link: {
-        marginRight: '2rem',
+        marginRight: '1rem',
         fontWeight: 'bold',
         color: 'white',
         textDecoration: 'none',
