@@ -10,8 +10,10 @@ const Nav = () => {
                 <RiMovie2Line style={styles.icon}/><a href="/" style={styles.a}><h2 style={styles.title_h2}>movieposters.com</h2></a>
             </div>
             <div className='nav-links' style={styles.navLinks}>
-                <Link to="/original-posters"> OriginalPosters</Link>
-                <Link to="/products"> Products</Link>
+                <Link to="/original-posters" style={styles.link}> ORIGINAL POSTERS</Link>
+                <Link to="/collections" style={styles.link}> POSTERS</Link>
+                <Link to="/collections" style={styles.link}> COLLECTIONS</Link>
+                <Link to="/framing" style={styles.link}> FRAMING</Link>
             </div>
         </nav>
     </div>
@@ -28,8 +30,9 @@ const styles = {
     },
 
     navBox: {
-        width: '74%',
-        margin: 'auto'
+        width: '80%',
+        margin: 'auto',
+        maxWidth: '1920px'
     },
 
     nav: {
@@ -66,6 +69,14 @@ const styles = {
     title_h2:{
         fontSize: '2.7rem',
         color: 'white'
+    },
+
+    link: {
+        marginRight: '2rem',
+        fontWeight: 'bold',
+        color: 'white',
+        textDecoration: 'none',
+        fontSize: '1.2rem'
     }
 }
 

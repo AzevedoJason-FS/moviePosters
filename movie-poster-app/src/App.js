@@ -1,7 +1,8 @@
 import { Routes, Route} from "react-router-dom";
 import Home from './pages/Home';
-import Products from "./pages/Products";
 import OriginalPosters from "./pages/OriginalPosters";
+import Collections from "./pages/Collections";
+import Framing from "./pages/Framing";
 
 const App = () => {
   return (
@@ -9,7 +10,9 @@ const App = () => {
          <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/original-posters' element={<OriginalPosters />} />
-          <Route path='/products' element={<Products />} />
+          <Route path='/collections' element={<Collections />} />
+          <Route path='/collections' element={<Collections />} />
+          <Route path='/framing' element={<Framing />} />
         </Routes>
     
 
