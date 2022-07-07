@@ -18,8 +18,8 @@ const Nav = () => {
                 <Link to="/framing" style={styles.link}> FRAMING</Link>
                 <Link to="/wishlist" style={styles.link}><BiHeart style={styles.icon}/></Link>
                 <Link to="/search" style={styles.link}> <AiOutlineSearch style={styles.icon}/></Link>
-                <Link to="/search" style={styles.link}> <RiUserReceivedFill style={styles.icon}/></Link>
-                <Link to="/login" style={styles.link}>
+                <Link to="/login" style={styles.link}> <RiUserReceivedFill style={styles.icon}/></Link>
+                <Link to="/cart" style={styles.link}>
                     <div style={styles.cartIcon}>
                         <h2 style={styles.cartNumber}>N</h2>
                     </div>
@@ -45,8 +45,8 @@ const styles = {
     },
 
     cartIcon: {
-        width: '40px',
-        height: '40px',
+        width: '36px',
+        height: '36px',
         background: 'white',
         borderRadius: '50px',
         display: 'flex',
@@ -70,13 +70,13 @@ const styles = {
         position: 'relative',
         width: '100%',
         transition: 'transform .25s cubic-bezier(.46, .01, .32,1)',
-        height: '5rem',
+        height: '4.4rem',
         display: 'flex',
         justifyContent: 'space-between'
     },
 
     navLinks: {
-        marginRight: '2rem',
+        marginRight: '1rem',
         position: 'absolute',
         right: '0',
         display: 'flex',
@@ -89,7 +89,7 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: '2rem'
+        marginLeft: '1rem'
     },
 
     a:{
@@ -97,16 +97,18 @@ const styles = {
     },
 
     title_h2:{
-        fontSize: '2.7rem',
-        color: 'white'
+        fontSize: '2.4em',
+        color: 'white',
+        fontWeight: 'bold',
+        margin: 0
     },
 
     link: {
-        marginRight: '1rem',
+        marginRight: '1.4rem',
         fontWeight: 'bold',
         color: 'white',
         textDecoration: 'none',
-        fontSize: '1.2rem'
+        fontSize: '1.1rem'
     }
 }
 
