@@ -89,7 +89,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: '1rem'
     },
 
     a:{

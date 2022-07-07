@@ -1,4 +1,5 @@
 import Nav from '../components/Nav';
+import MiddleNav from '../components/MiddleNav';
 
 const Home = () => {
     return(
@@ -10,12 +11,12 @@ const Home = () => {
                 </div>
                 <div style={styles.imgSlider}>
                 <img src="images/thor-love.jpeg" alt="Thor" style={styles.img}/>
-                <img src="images/thor-love.jpeg" alt="Thor" style={styles.img}/>
-                <img src="images/thor-love.jpeg" alt="Thor" style={styles.img}/>
-                <img src="images/thor-love.jpeg" alt="Thor" style={styles.img}/>
+                <img src="images/thor-rag.jpg" alt="Thor" style={styles.img}/>
+                <img src="images/thor.jpg" alt="Thor" style={styles.img}/>
+                <img src="images/avengers.jpg" alt="Thor" style={styles.img}/>
                 </div>
             </div>
-            
+            <MiddleNav/>
         </div>    
     )
 }
@@ -30,10 +31,10 @@ const styles = {
 
     promo: {
         display: 'flex',
-        position: 'relative',
         height: '30rem',
         lenght: '100%',
-        background: 'cornflowerblue',
+        alignItems: 'center',
+        width: 'max-content'
     },
 
     promoBox: {
@@ -43,13 +44,14 @@ const styles = {
     promoTitle: {
         fontSize: '6rem',
         fontWeight: 800,
-        color: 'white'
+        color: 'white',
+        margin: 0
     },
 
     img: {
         marginRight: '2rem',
-        maxWidth: '100%',
-        height: 'auto',
+        objectFit: 'contain',
+        width: '100%'
     },
 
     imgSlider: {
@@ -58,5 +60,7 @@ const styles = {
        overflow: 'hidden',
        height: '90%',
        margin: 'auto',
+       width: '66%',
+       marginRight: 0
     }
 }
