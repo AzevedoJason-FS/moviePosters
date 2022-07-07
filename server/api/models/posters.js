@@ -32,7 +32,7 @@ const postersSchema = mongoose.Schema({
         type: Boolean,
         required: true,
     },
-    collection: {
+    collectionName: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Collection",
         required: true
