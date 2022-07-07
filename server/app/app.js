@@ -3,7 +3,7 @@ const morgan = require("morgan");
 require('dotenv').config()
 const app = express();
 const mongoose = require("mongoose");
-// const communitiesRoutes = require("../api/routes/communities");
+const collectionsRoutes = require("../api/routes/collections");
 // const usersRoutes = require("../api/routes/users");
 
 
@@ -25,7 +25,7 @@ res.status(201).json({
 })
 });
 
-// app.use("/communities", communitiesRoutes);
+app.use("/collections", collectionsRoutes);
 // app.use("/users", usersRoutes);
 
 //middleware to handle CORS Policy
