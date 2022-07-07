@@ -5,7 +5,7 @@ import "../index";
 const MiddleNav = () => {
     return(
         <nav style={styles.nav}>
-            <div className='nav-links' style={styles.navLinks}>
+            <div className='nav-links-middle' style={styles.navLinks}>
                 <Link to="/original-posters" style={styles.link} className='link'> Suggested</Link>
                 <Link to="/collections" style={styles.link} className='link'> Top Selling</Link>
                 <Link to="/collections" style={styles.link} className='link'> Originals</Link>
@@ -29,12 +29,15 @@ const styles = {
     navLinks: {
         display: 'flex',
         justifyContent: 'space-evenly',
+        whiteSpace: 'nowrap',
+        overflowY: 'scroll'
     },
 
     link: {
         color: 'white',
         textDecoration: 'none',
         fontWeight: '800',
-        fontSize: '2rem'
+        fontSize: '2rem',
+        padding: '0 14px 12px'
     },
 }

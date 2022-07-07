@@ -34,7 +34,6 @@ const styles = {
         height: '30rem',
         lenght: '100%',
         alignItems: 'center',
-        width: 'max-content'
     },
 
     promoBox: {
@@ -42,10 +41,11 @@ const styles = {
     },
 
     promoTitle: {
-        fontSize: '6rem',
+        fontSize: '5.8rem',
         fontWeight: 800,
         color: 'white',
-        margin: 0
+        margin: 0,
+        letterSpacing: '-2px'
     },
 
     img: {

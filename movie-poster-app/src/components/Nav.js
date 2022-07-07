@@ -1,10 +1,18 @@
 import React from 'react'
+import {useState} from 'react';
 import { RiMovie2Line, RiUserReceivedFill } from "react-icons/ri";
 import { BiHeart } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from 'react-router-dom'
 
 const Nav = () => {
+
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(current => !current);
+  };
+
     return(
     <div style={styles.navBox}>
         <nav className='nav' style={styles.nav}>
@@ -17,7 +25,7 @@ const Nav = () => {
                 <Link to="/collections" style={styles.link}> COLLECTIONS</Link>
                 <Link to="/framing" style={styles.link}> FRAMING</Link>
                 <Link to="/wishlist" style={styles.link}><BiHeart style={styles.icon}/></Link>
-                <Link to="/search" style={styles.link}> <AiOutlineSearch style={styles.icon}/></Link>
+                <button style={styles.button} onClick={handleClick}><AiOutlineSearch style={styles.icon}/></button>
                 <Link to="/login" style={styles.link}> <RiUserReceivedFill style={styles.icon}/></Link>
                 <Link to="/cart" style={{ marginRight: '0',fontWeight: 'bold',color: 'white',textDecoration: 'none',fontSize: '1.1rem'}}>
                     <div style={styles.cartIcon}>
@@ -27,6 +35,16 @@ const Nav = () => {
                
             </div>
         </nav>
+        <div className={isActive ? 'inputShow' : ''} style={styles.test}>
+            <div>
+                <AiOutlineSearch style={styles.icon}/>
+            </div>
+                <input 
+                style={styles.searchField} 
+                placeholder={'Search'}
+
+                />
+        </div>
     </div>
     )
 }
@@ -36,6 +54,24 @@ export default Nav;
 const styles = {
     icon: {
         fontSize: '30px',
+        color: 'white'
+    },
+
+    test: {
+       display: 'none'
+    },
+
+    searchField: {
+        width: '-webkit-fill-available',
+        border: 'none',
+        background: 'none',
+        height: '100%',
+        color: 'white',
+        fontSize: '2rem',
+        fontWeight: 'bold',
+    },
+
+    searchTitle: {
         color: 'white'
     },
 
@@ -108,6 +144,13 @@ const styles = {
         color: 'white',
         textDecoration: 'none',
         fontSize: '1.1rem'
+    },
+
+    button: {
+        background: 'none',
+        border: 'none',
+        marginRight: '1.4rem',
+        cursor: 'pointer'
     }
 }
 

@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+::placeholder {
+  color: white
+}
+
 .link:hover:nth-child(1) {
   border-bottom: 8px solid white;
   padding-bottom: 3px
@@ -46,4 +50,36 @@ code {
 .link:hover:nth-child(7) {
   border-bottom: 8px solid rgb(255, 124, 227) ;
   padding-bottom: 3px
+}
+
+.nav-links-middle:after {
+    content: "";
+    position: absolute;
+    right: 0px;
+    width: 72px;
+    z-index: 1;
+    top: 4.4rem;
+    height: 100%;
+    background: linear-gradient(90deg,transparent 0,#000);
+}
+
+input:focus {
+  outline: none /* Removes the border when the input is clicked */
+}
+
+.inputShow {
+  width: 80%;
+  height: 2rem;
+  margin: auto;
+  display: flex !important;
+  border: 6px solid white;
+  align-items: center;
+  padding: 4px
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1140px) {
+  .link {
+    font-size: 24px !important;
+  }
 }
