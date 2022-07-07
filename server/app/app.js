@@ -4,7 +4,7 @@ require('dotenv').config()
 const app = express();
 const mongoose = require("mongoose");
 const collectionsRoutes = require("../api/routes/collections");
-// const usersRoutes = require("../api/routes/users");
+const postersRoutes = require("../api/routes/posters");
 
 
 //Middleware for logging
@@ -26,7 +26,7 @@ res.status(201).json({
 });
 
 app.use("/collections", collectionsRoutes);
-// app.use("/users", usersRoutes);
+app.use("/posters", postersRoutes)
 
 //middleware to handle CORS Policy
 app.use((req, res, next) => {
