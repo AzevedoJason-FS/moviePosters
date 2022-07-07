@@ -24,9 +24,9 @@ const Nav = () => {
                 <Link to="/collections" style={styles.link}> POSTERS</Link>
                 <Link to="/collections" style={styles.link}> COLLECTIONS</Link>
                 <Link to="/framing" style={styles.link}> FRAMING</Link>
-                <Link to="/wishlist" style={styles.link}><BiHeart style={styles.icon}/></Link>
+                <Link to="/wishlist" style={styles.linkIcon}><BiHeart style={styles.icon}/></Link>
                 <button style={styles.button} onClick={handleClick}><AiOutlineSearch style={styles.icon}/></button>
-                <Link to="/login" style={styles.link}> <RiUserReceivedFill style={styles.icon}/></Link>
+                <Link to="/login" style={styles.linkIcon}> <RiUserReceivedFill style={styles.icon}/></Link>
                 <Link to="/cart" style={{ marginRight: '0',fontWeight: 'bold',color: 'white',textDecoration: 'none',fontSize: '1.1rem'}}>
                     <div style={styles.cartIcon}>
                         <h2 style={styles.cartNumber}>N</h2>
@@ -35,7 +35,7 @@ const Nav = () => {
                
             </div>
         </nav>
-        <div className={isActive ? 'inputShow' : ''} style={styles.test}>
+        <div className={isActive ? 'inputShow' : ''} style={styles.searchBox}>
             <div>
                 <AiOutlineSearch style={styles.icon}/>
             </div>
@@ -57,7 +57,7 @@ const styles = {
         color: 'white'
     },
 
-    test: {
+    searchBox: {
        display: 'none'
     },
 
@@ -146,10 +146,18 @@ const styles = {
         fontSize: '1.1rem'
     },
 
+    linkIcon: {
+            marginRight: '.5rem',
+            fontWeight: 'bold',
+            color: 'white',
+            textDecoration: 'none',
+            fontSize: '1.1rem'
+    },
+
     button: {
         background: 'none',
         border: 'none',
-        marginRight: '1.4rem',
+        marginRight: '.5rem',
         cursor: 'pointer'
     }
 }
