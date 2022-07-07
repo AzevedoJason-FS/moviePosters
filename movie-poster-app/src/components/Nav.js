@@ -19,7 +19,7 @@ const Nav = () => {
                 <Link to="/wishlist" style={styles.link}><BiHeart style={styles.icon}/></Link>
                 <Link to="/search" style={styles.link}> <AiOutlineSearch style={styles.icon}/></Link>
                 <Link to="/login" style={styles.link}> <RiUserReceivedFill style={styles.icon}/></Link>
-                <Link to="/cart" style={styles.link}>
+                <Link to="/cart" style={{ marginRight: '0',fontWeight: 'bold',color: 'white',textDecoration: 'none',fontSize: '1.1rem'}}>
                     <div style={styles.cartIcon}>
                         <h2 style={styles.cartNumber}>N</h2>
                     </div>
