@@ -1,12 +1,13 @@
 const express = require("express");
 const morgan = require("morgan");
-require('dotenv').config()
 const app = express();
 const mongoose = require("mongoose");
 const collectionsRoutes = require("../api/routes/collections");
 const postersRoutes = require("../api/routes/posters");
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
+const cors = require('cors')
+require('dotenv').config()
 
 //Middleware for Image Upload
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -34,6 +35,7 @@ app.use("/collections", collectionsRoutes);
 app.use("/posters", postersRoutes)
 
 //middleware to handle CORS Policy
+app.use(cors())
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization");
