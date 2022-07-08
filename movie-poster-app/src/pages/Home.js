@@ -1,8 +1,32 @@
+import React from "react";
+import axios from "axios"
 import Nav from '../components/Nav';
 import MiddleNav from '../components/MiddleNav';
 import PosterForm from '../components/forms/PosterForm';
 
 const Home = () => {
+    
+    const [poster, setPoster] = React.useState(null);
+
+    const baseURL = "http://localhost:3001/posters";
+
+    React.useEffect(() => {
+        axios.get(baseURL)
+             .then((response) => {
+                setPoster(response.data);
+                console.log(response.data);
+             }).catch(err => {
+                if (err.response && err.response.status === 406){
+                    console.clear()
+                }
+              })
+    }, []);
+  
+    if (!poster) return null;
+
+    const handleSubmit = () => {
+
+    }
     return(
         <div style={styles.main}>
             <Nav />

@@ -21,10 +21,10 @@ const PosterForm = (props) => {
         onChange={props.onChange}
       />
       <input
-        className='m-2'
+        className='size'
         type="text"
-        name="img"
-        placeholder="Image Address"
+        name="size"
+        placeholder="Size"
         value={props.valueImg}
         onChange={props.onChange}
       />
