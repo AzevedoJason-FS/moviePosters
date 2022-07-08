@@ -9,27 +9,26 @@ const postersSchema = mongoose.Schema({
     img: { 
         type : String,
         required: true,
+        data: Buffer,
     },
     size: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
-        ref: "Collection",
     },
     format: {
         type: String,
         required: true,
     },
     rolled_folded:{
-        type: Boolean,
+        type: String,
         required: true,
     },
     year: {
-        type: mongoose.Schema.Types.ObjectId,
+        type : Number, 
         required: true,
-        ref: "Collection",
     },
     orginal_reprint: {
-        type: Boolean,
+        type: String,
         required: true,
     },
     collectionName: {

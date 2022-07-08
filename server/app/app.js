@@ -5,7 +5,12 @@ const app = express();
 const mongoose = require("mongoose");
 const collectionsRoutes = require("../api/routes/collections");
 const postersRoutes = require("../api/routes/posters");
+const bodyParser = require('body-parser')
+const fileUpload = require('express-fileupload')
 
+//Middleware for Image Upload
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(fileUpload())
 
 //Middleware for logging
 app.use(morgan("dev"));
