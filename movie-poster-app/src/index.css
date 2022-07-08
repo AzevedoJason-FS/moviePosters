@@ -19,37 +19,37 @@ code {
 
 .link:hover:nth-child(1) {
   border-bottom: 8px solid white;
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .link:hover:nth-child(2) {
   border-bottom: 8px solid rgb(255, 166, 0);
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .link:hover:nth-child(3) {
   border-bottom: 8px solid rgb(255, 255, 108);
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .link:hover:nth-child(4) {
   border-bottom: 8px solid rgb(255, 88, 88);
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .link:hover:nth-child(5) {
   border-bottom: 8px solid rgb(139, 255, 139);
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .link:hover:nth-child(6) {
   border-bottom: 8px solid rgb(122, 239, 255) ;
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .link:hover:nth-child(7) {
   border-bottom: 8px solid rgb(255, 124, 227) ;
-  padding-bottom: 3px
+  padding-bottom: 2px
 }
 
 .nav-links-middle:after {

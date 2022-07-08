@@ -1,5 +1,6 @@
 import Nav from '../components/Nav';
 import MiddleNav from '../components/MiddleNav';
+import PosterForm from '../components/forms/PosterForm';
 
 const Home = () => {
     return(
@@ -17,6 +18,9 @@ const Home = () => {
                 </div>
             </div>
             <MiddleNav/>
+            <PosterForm 
+            
+            />
         </div>    
     )
 }

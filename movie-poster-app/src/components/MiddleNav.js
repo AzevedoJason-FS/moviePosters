@@ -38,6 +38,5 @@ const styles = {
         textDecoration: 'none',
         fontWeight: '800',
         fontSize: '2rem',
-        padding: '0 14px 12px'
     },
 }
