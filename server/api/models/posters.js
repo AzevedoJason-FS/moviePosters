@@ -9,7 +9,6 @@ const postersSchema = mongoose.Schema({
     img: { 
         type : String,
         required: true,
-        data: Buffer,
     },
     size: {
         type: String,
@@ -27,7 +26,7 @@ const postersSchema = mongoose.Schema({
         type : Number, 
         required: true,
     },
-    orginal_reprint: {
+    original_reprint: {
         type: String,
         required: true,
     },

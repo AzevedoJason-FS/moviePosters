@@ -35,16 +35,17 @@ app.use("/collections", collectionsRoutes);
 app.use("/posters", postersRoutes)
 
 //middleware to handle CORS Policy
-app.use(cors())
+app.use(cors());
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization");
-
-    if(req.method === "OPTIONS"){
-        res.header("Access-Control-Allow-Methods","POST, PUT, GET, PATCH, DELETE");
-    };
-    next();
-});
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    //intercept the OPTIONS call so we don't double up on calls to the integration
+    if ('OPTIONS' === request.method) {
+      res.send(200);
+    } else {
+      next();
+    }
+  });
 
 //Middleware modules for Error Handling
 app.use((req, res, next) => {

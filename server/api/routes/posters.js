@@ -8,6 +8,8 @@ const path = require('path')
 //GET all collections
 router.get("/", (req, res, next) => {
     Poster.find().lean()
+    .select("name _id")
+    .populate("collectionName", "name")
     .then(result => {
         console.log(result);
         res.status(200).json({
@@ -47,34 +49,34 @@ router.post("/", (req, res, next) => {
             })
         }
 
-        let sampleFile;
-        let uploadPath;
+        // let sampleFile;
+        // let uploadPath;
 
-        // Check to see if there are any files to upload
-        if (!req.files || Object.keys(req.files).length === 0) {
-            return res.status(400).send('No files were uploaded.');
-        }
+        // // Check to see if there are any files to upload
+        // // if (!req.files || Object.keys(req.files).length === 0) {
+        // //     return res.status(400).send('No files were uploaded.');
+        // // }
 
-            sampleFile = req.files.sampleFile;
-            uploadPath = '../../movie-poster-app/public/images/' + sampleFile.name;
+        //     sampleFile = req.files.sampleFile;
+        //     uploadPath = '../../movie-poster-app/public/images/' + sampleFile.name;
             
-        // Get the extension from the incoming file (ie: .png,.jpg,.gif)
-        const extension = path.extname(req.files.image.name)
+        // // Get the extension from the incoming file (ie: .png,.jpg,.gif)
+        // const extension = path.extname(req.files.image.name)
 
-        // Render the final file path based off the imageId and file extension
-        uploadPath = util.format(uploadPath, req.imageId, extension)
+        // // Render the final file path based off the imageId and file extension
+        // uploadPath = util.format(uploadPath, req.imageId, extension)
     
-        const fileUpload = sampleFile.mv(uploadPath);
+        // const fileUpload = sampleFile.mv(uploadPath);
     
     const newPoster = new Poster({
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
-        img: fileUpload,
+        img: req.body.img,
         size: req.body.size,
         format: req.body.format,
         rolled_folded: req.body.rolled_folded,
         year: req.body.year,
-        orginal_reprint: req.body.orginal_reprint,
+        original_reprint: req.body.original_reprint,
         collectionName: req.body.collectionName,
         price: req.body.price,
         inventory: req.body.inventory,
