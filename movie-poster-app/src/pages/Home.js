@@ -7,14 +7,29 @@ import PosterForm from '../components/forms/PosterForm';
 const Home = () => {
     
     const [poster, setPoster] = React.useState(null);
+    const [file, setFile] = React.useState()
+    const [formValue, setformValue] = React.useState({
+        name: '',
+        img: '',
+        size: '',
+        format: '',
+        rolled: '',
+        year: '',
+        original: '',
+        collectionName: '',
+        price: '',
+        inventory: '',
+        slug: '',
+        description: ''
+      });
 
-    const baseURL = "http://localhost:3001/posters";
+    const baseURL = "/posters";
 
     React.useEffect(() => {
         axios.get(baseURL)
              .then((response) => {
-                setPoster(response.data);
-                console.log(response.data);
+                setPoster(response.data.Posters);
+                console.log(response.data.Posters);
              }).catch(err => {
                 if (err.response && err.response.status === 406){
                     console.clear()
@@ -24,9 +39,42 @@ const Home = () => {
   
     if (!poster) return null;
 
-    const handleSubmit = () => {
-
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const baseURL = "/posters";
+            axios.post(baseURL, {
+                    name:formValue.name,
+                    img:formValue.img,
+                    size:formValue.size,
+                    format:formValue.format,
+                    rolled:formValue.rolled,
+                    year: formValue.year,
+                    original: formValue.original,
+                    collectionName: formValue.collectionName,
+                    price: formValue.price,
+                    inventory: formValue.inventory,
+                    slug: formValue.slug,
+                    description: formValue.description
+              })
+                 .then((response) => {
+                    console.log(response);
+              }, (error) => {
+                    console.log(error.response);
+              });
     }
+
+    const handleChange = (e) => {
+
+        setformValue({
+          ...formValue,
+          [e.target.name]: e.target.value
+        });
+      }
+
+      const fileChangeHandler = (e) => {
+		setFile(e.target.files[0])
+	};
+
     return(
         <div style={styles.main}>
             <Nav />
@@ -43,7 +91,21 @@ const Home = () => {
             </div>
             <MiddleNav/>
             <PosterForm 
-            
+                handleSubmit={handleSubmit}
+                onChange={handleChange}
+                onChangeImg={fileChangeHandler}
+                valueName={formValue.name}
+                valueImg={formValue.img}
+                valueSize={formValue.size}
+                valueFormat={formValue.format}
+                valueRolled={formValue.rolled}
+                valueYear={formValue.year}
+                valueOriginal={formValue.original}
+                valueCollectionName={formValue.collectionName}
+                valuePrice={formValue.price}
+                valueInventory={formValue.inventory}
+                valueSlug={formValue.slug}
+                valueDescription={formValue.description}
             />
         </div>    
     )
