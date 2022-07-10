@@ -2,8 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Poster = require("../models/posters");
 const router = express.Router();
-const util = require('util')
-const path = require('path')
 
 //GET all collections
 router.get("/", (req, res, next) => {
@@ -33,8 +31,10 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", (req, res, next) => {
-
+router.post("/upload", (req, res, next) => {
+    const newpath = "../../uploads/";
+    const file = req.files.file;
+    const filename = file.name;
     Poster.find({
         name: req.body.name
     })
@@ -49,29 +49,21 @@ router.post("/", (req, res, next) => {
             })
         }
 
-        // let sampleFile;
-        // let uploadPath;
+        const movedFile = file.mv(`${newpath}${filename}`, (err) => {
+            if (err) {
+              res.status(500).json({
+                   message: "File upload failed", code: 200 
+              });
+            }
+            res.status(200).json({ 
+                   message: "File Uploaded", code: 200 
+            });
+        });
 
-        // // Check to see if there are any files to upload
-        // // if (!req.files || Object.keys(req.files).length === 0) {
-        // //     return res.status(400).send('No files were uploaded.');
-        // // }
-
-        //     sampleFile = req.files.sampleFile;
-        //     uploadPath = '../../movie-poster-app/public/images/' + sampleFile.name;
-            
-        // // Get the extension from the incoming file (ie: .png,.jpg,.gif)
-        // const extension = path.extname(req.files.image.name)
-
-        // // Render the final file path based off the imageId and file extension
-        // uploadPath = util.format(uploadPath, req.imageId, extension)
-    
-        // const fileUpload = sampleFile.mv(uploadPath);
-    
     const newPoster = new Poster({
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
-        img: req.body.img,
+        img: movedFile,
         size: req.body.size,
         format: req.body.format,
         rolled_folded: req.body.rolled_folded,

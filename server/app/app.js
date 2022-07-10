@@ -5,13 +5,20 @@ const mongoose = require("mongoose");
 const collectionsRoutes = require("../api/routes/collections");
 const postersRoutes = require("../api/routes/posters");
 const bodyParser = require('body-parser')
-const fileUpload = require('express-fileupload')
+const fileupload = require("express-fileupload");
 const cors = require('cors')
 require('dotenv').config()
 
 //Middleware for Image Upload
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(fileUpload())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(fileupload());
+app.use(express.static("uploads"));
+app.use(bodyParser.json());
+app.use(
+    fileupload({
+        createParentPath: true,
+    }),
+);
 
 //Middleware for logging
 app.use(morgan("dev"));
