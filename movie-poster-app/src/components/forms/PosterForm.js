@@ -1,12 +1,70 @@
-import React from 'react';
+import React from "react";
+import axios from "axios"
 
 const PosterForm = (props) => {
+    const [fileName, setFileName] = React.useState(null)
+    const [formValue, setformValue] = React.useState({
+        name: '',
+        img: '',
+        size: '',
+        format: '',
+        rolled: '',
+        year: '',
+        original: '',
+        collectionName: '',
+        price: '',
+        inventory: '',
+        slug: '',
+        description: ''
+      });
+
+      const handleSubmit = async(e) => {
+        e.preventDefault();
+        
+        const data = new FormData() 
+        data.append('file', fileName)
+
+        const baseURL = "/posters/upload";
+            axios.post(baseURL, data, {
+                    name:formValue.name,
+                    img: data,
+                    size:formValue.size,
+                    format:formValue.format,
+                    rolled:formValue.rolled,
+                    year: formValue.year,
+                    original: formValue.original,
+                    collectionName: formValue.collectionName,
+                    price: formValue.price,
+                    inventory: formValue.inventory,
+                    slug: formValue.slug,
+                    description: formValue.description
+              })
+                 .then((response) => {
+                    console.log(response);
+              }, (error) => {
+                    console.log(error.response);
+              });
+    }
+
+    const fileChangeHandler = (e) => {
+      setFileName(e.target.files[0]);
+          console.log(e.target.files[0])
+    };
+
+    const handleChange = (e) => {
+      setformValue({
+        ...formValue,
+        [e.target.name]: e.target.value
+      });
+    }
+
     return(
     <form 
-        onSubmit={props.handleSubmit} 
+        method="post" 
+        encType="multipart/form-data"
+        onSubmit={handleSubmit} 
         style={styles.form} 
         id='uploadForm' 
-        encType="multipart/form-data"
     >
       <h2 style={styles.formTitle}>Create Poster</h2>
       name
@@ -15,8 +73,8 @@ const PosterForm = (props) => {
         type="text"
         name="name"
         placeholder="Poster Name"
-        value={props.valueName}
-        onChange={props.onChange}
+        value={formValue.name}
+        onChange={handleChange}
       />
       Img
       <input
@@ -24,8 +82,7 @@ const PosterForm = (props) => {
         type="file"
         name="sampleFile"
         placeholder="Image"
-        value={props.valueImg}
-        onChange={props.onChangeImg}
+        onChange={fileChangeHandler}
       />
       size
       <input
@@ -33,8 +90,8 @@ const PosterForm = (props) => {
         type="text"
         name="size"
         placeholder="Size"
-        value={props.valueSize}
-        onChange={props.onChange}
+        value={formValue.size}
+        onChange={handleChange}
       />
       format
        <input
@@ -42,8 +99,8 @@ const PosterForm = (props) => {
         type="text"
         name="format"
         placeholder="Format"
-        value={props.valueFormat}
-        onChange={props.onChange}
+        value={formValue.format}
+        onChange={handleChange}
       />
       rolled-folded
        <input
@@ -51,8 +108,8 @@ const PosterForm = (props) => {
         type="text"
         name="rolled"
         placeholder="Rolled or Folded"
-        value={props.valueRolled}
-        onChange={props.onChange}
+        value={formValue.rolled}
+        onChange={handleChange}
       />
       year
        <input
@@ -60,8 +117,8 @@ const PosterForm = (props) => {
         type="text"
         name="year"
         placeholder="Year"
-        value={props.valueYear}
-        onChange={props.onChange}
+        value={formValue.year}
+        onChange={handleChange}
       />
       original_reprint
        <input
@@ -69,8 +126,8 @@ const PosterForm = (props) => {
         type="text"
         name="original"
         placeholder="Original or Reprint"
-        value={props.valueOriginal}
-        onChange={props.onChange}
+        value={formValue.original}
+        onChange={handleChange}
       />
       collectionName
        <input
@@ -78,8 +135,8 @@ const PosterForm = (props) => {
         type="text"
         name="collectionName"
         placeholder="Size"
-        value={props.valueCollectionName}
-        onChange={props.onChange}
+        value={formValue.collectionName}
+        onChange={handleChange}
       />
       price
        <input
@@ -87,8 +144,8 @@ const PosterForm = (props) => {
         type="text"
         name="price"
         placeholder="Price"
-        value={props.valuePrice}
-        onChange={props.onChange}
+        value={formValue.price}
+        onChange={handleChange}
       />
       inventory
        <input
@@ -96,8 +153,8 @@ const PosterForm = (props) => {
         type="text"
         name="inventory"
         placeholder="Inventory"
-        value={props.valueInventory}
-        onChange={props.onChange}
+        value={formValue.inventory}
+        onChange={handleChange}
       />
       slug
        <input
@@ -105,8 +162,8 @@ const PosterForm = (props) => {
         type="text"
         name="slug"
         placeholder="Slug"
-        value={props.valueSlug}
-        onChange={props.onChange}
+        value={formValue.slug}
+        onChange={handleChange}
       />
       description
        <input
@@ -114,8 +171,8 @@ const PosterForm = (props) => {
         type="text"
         name="description"
         placeholder="Description"
-        value={props.valueDescription}
-        onChange={props.onChange}
+        value={formValue.description}
+        onChange={handleChange}
       />
       <button type="submit" style={styles.button}>Submit Poster</button>
     </form>
