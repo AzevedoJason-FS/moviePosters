@@ -1,11 +1,12 @@
 import React from "react";
+import { Helmet } from 'react-helmet-async';
 import axios from "axios"
 import Nav from '../components/Nav';
 import MiddleNav from '../components/MiddleNav';
 import PosterForm from '../components/forms/PosterForm';
 
 const Home = () => {
-    
+
     const [poster, setPoster] = React.useState(null);
 
     const baseURL = "/posters";
@@ -26,6 +27,9 @@ const Home = () => {
 
     return(
         <div style={styles.main}>
+            <Helmet>
+                <style>{"body { background-color: black; }"}</style>
+            </Helmet>
             <Nav />
             <div style={styles.promo}>
                 <div style={styles.promoBox}>
@@ -42,6 +46,7 @@ const Home = () => {
             <PosterForm />
             <h2 style={{color:'red'}}>{poster[0].name}</h2>
             <h2 style={{color:'red'}}>{poster[0].collectionName.name}</h2>
+            
         </div>    
     )
 }

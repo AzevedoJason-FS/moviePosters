@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios"
 
-const PosterForm = (props) => {
-    const [fileName, setFileName] = React.useState(null)
+const PosterForm = () => {
+
     const [formValue, setformValue] = React.useState({
         name: '',
         img: '',
@@ -20,14 +20,11 @@ const PosterForm = (props) => {
 
       const handleSubmit = async(e) => {
         e.preventDefault();
-        
-        const data = new FormData() 
-        data.append('file', fileName)
 
         const baseURL = "/posters/upload";
-            axios.post(baseURL, data, {
+            axios.post(baseURL, {
                     name:formValue.name,
-                    img: data,
+                    img: '',
                     size:formValue.size,
                     format:formValue.format,
                     rolled:formValue.rolled,
@@ -45,11 +42,6 @@ const PosterForm = (props) => {
                     console.log(error.response);
               });
     }
-
-    const fileChangeHandler = (e) => {
-      setFileName(e.target.files[0]);
-          console.log(e.target.files[0])
-    };
 
     const handleChange = (e) => {
       setformValue({
@@ -77,13 +69,13 @@ const PosterForm = (props) => {
         onChange={handleChange}
       />
       Img
-      <input
+      {/* <input
         className='img'
         type="file"
-        name="sampleFile"
+        name="file"
         placeholder="Image"
-        onChange={fileChangeHandler}
-      />
+        onChange={handleChange}
+      /> */}
       size
       <input
         className='size'

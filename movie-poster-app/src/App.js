@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import OriginalPosters from "./pages/OriginalPosters";
 import Collections from "./pages/Collections";
 import Framing from "./pages/Framing";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -13,6 +14,8 @@ const App = () => {
           <Route path='/collections' element={<Collections />} />
           <Route path='/collections' element={<Collections />} />
           <Route path='/framing' element={<Framing />} />
+          <Route path='/framing' element={<Framing />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
     
 
