@@ -4,16 +4,15 @@ const app = express();
 const mongoose = require("mongoose");
 const collectionsRoutes = require("../api/routes/collections");
 const postersRoutes = require("../api/routes/posters");
-const bodyParser = require('body-parser')
+const usersRoutes = require("../api/routes/users");
 const fileupload = require("express-fileupload");
-const cors = require('cors')
+const cors = require('cors');
 require('dotenv').config()
 
 //Middleware for Image Upload
-app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use(fileupload());
 app.use(express.static("uploads"));
-app.use(bodyParser.json());
 app.use(
     fileupload({
         createParentPath: true,
@@ -40,6 +39,7 @@ res.status(201).json({
 
 app.use("/collections", collectionsRoutes);
 app.use("/posters", postersRoutes)
+app.use("/users", usersRoutes)
 
 //middleware to handle CORS Policy
 app.use(cors());

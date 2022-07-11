@@ -32,9 +32,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/upload", (req, res, next) => {
-    const newpath = "../../uploads/";
-    const file = req.files.file;
-    const filename = file.name;
     Poster.find({
         name: req.body.name
     })
@@ -49,21 +46,13 @@ router.post("/upload", (req, res, next) => {
             })
         }
 
-        const movedFile = file.mv(`${newpath}${filename}`, (err) => {
-            if (err) {
-              res.status(500).json({
-                   message: "File upload failed", code: 200 
-              });
-            }
-            res.status(200).json({ 
-                   message: "File Uploaded", code: 200 
-            });
-        });
+
+
 
     const newPoster = new Poster({
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
-        img: movedFile,
+        img: saveTo,
         size: req.body.size,
         format: req.body.format,
         rolled_folded: req.body.rolled_folded,
