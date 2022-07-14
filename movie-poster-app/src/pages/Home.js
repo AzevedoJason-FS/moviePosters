@@ -4,6 +4,8 @@ import axios from "axios"
 import Nav from '../components/Nav';
 import MiddleNav from '../components/MiddleNav';
 import PosterForm from '../components/forms/PosterForm';
+import Footer from '../components/Footer';
+import GotMail from "../components/GotMail";
 
 const Home = () => {
 
@@ -26,10 +28,7 @@ const Home = () => {
     if (!poster) return null;
 
     return(
-        <div style={styles.main}>
-            <Helmet>
-                <style>{"body { background-color: black; }"}</style>
-            </Helmet>
+        <div>
             <Nav />
             <div style={styles.promo}>
                 <div style={styles.promoBox}>
@@ -42,11 +41,23 @@ const Home = () => {
                 <img src="images/avengers.jpg" alt="Thor" style={styles.img}/>
                 </div>
             </div>
+        <div style={styles.main}>
+            <Helmet>
+                <style>{"body { background-color: black; }"}</style>
+            </Helmet>
+           
             <MiddleNav/>
             <PosterForm />
             <h2 style={{color:'red'}}>{poster[0].name}</h2>
             <h2 style={{color:'red'}}>{poster[0].collectionName.name}</h2>
-            
+        </div>
+        <GotMail 
+            banner={styles.banner}
+            bannerTitle={styles.bannerTitle}
+            bannerSubTitle={styles.bannerSubTitle}
+            bannerInput={styles.bannerInput}
+        />
+        <Footer />
         </div>    
     )
 }
@@ -63,15 +74,18 @@ const styles = {
         display: 'flex',
         height: '30rem',
         lenght: '100%',
+        marginTop: '3.5rem',
         alignItems: 'center',
     },
 
     promoBox: {
-       
+        width: '40%',
+        display: 'flex',
+        justifyContent: 'flex-end'
     },
 
     promoTitle: {
-        fontSize: '5.8rem',
+        fontSize: '6rem',
         fontWeight: 800,
         color: 'white',
         margin: 0,
@@ -92,5 +106,32 @@ const styles = {
        margin: 'auto',
        width: '66%',
        marginRight: 0
+    },
+
+    banner: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingBottom: '4rem',
+        paddingTop: '4rem',
+        background: 'white',
+    },
+
+    bannerTitle: {
+        fontSize: '5rem',
+        margin: '0'
+    },
+
+    bannerSubTitle: {
+        fontSize: '1.5rem',
+        margin: '.5rem auto'
+    },
+
+    bannerInput: {
+        border: '4px solid black',
+        width: '45%',
+        fontSize: '2rem',
+        padding: '5px',
+        margin: '2rem auto'
     }
 }

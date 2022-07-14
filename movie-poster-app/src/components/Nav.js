@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react';
-import { RiMovie2Line, RiUserReceivedFill } from "react-icons/ri";
+import { RiMovie2Line, RiUserReceivedFill, RiArrowDropDownLine } from "react-icons/ri";
 import { BiHeart } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from 'react-router-dom'
@@ -20,9 +20,9 @@ const Nav = () => {
                 <RiMovie2Line style={styles.logoIcon}/><a href="/" style={styles.a}><h2 style={styles.title_h2}>movieposters.com</h2></a>
             </div>
             <div className='nav-links' style={styles.navLinks}>
-                <Link to="/original-posters" style={styles.link}> ORIGINAL POSTERS</Link>
-                <Link to="/collections" style={styles.link}> POSTERS</Link>
-                <Link to="/collections" style={styles.link}> COLLECTIONS</Link>
+                <Link to="/original-posters" style={styles.link}> ORIGINAL POSTERS <RiArrowDropDownLine style={styles.dropDownMenuIcon}/> </Link>
+                <Link to="/collections" style={styles.link}> POSTERS <RiArrowDropDownLine style={styles.dropDownMenuIcon}/> </Link>
+                <Link to="/collections" style={styles.link}> COLLECTIONS <RiArrowDropDownLine style={styles.dropDownMenuIcon}/> </Link>
                 <Link to="/framing" style={styles.link}> FRAMING</Link>
                 <Link to="/wishlist" style={styles.linkIcon}><BiHeart style={styles.icon}/></Link>
                 <button style={styles.button} onClick={handleClick}><AiOutlineSearch style={styles.icon}/></button>
@@ -42,7 +42,7 @@ const Nav = () => {
                 <input 
                 style={styles.searchField} 
                 placeholder={'Search'}
-
+                className='searchField'
                 />
         </div>
     </div>
@@ -90,13 +90,23 @@ const styles = {
         justifyContent: 'center'
     },
 
+    dropDownMenuIcon: {
+        fontSize: '2.5rem',
+        color: '#f4ca34'
+    },
+
     cartNumber:{
         fontSize: '1rem',
         color: 'black'
     },
 
     navBox: {
-        background: 'black'
+        background: 'black',
+        paddingBottom: '10px',
+        position: 'fixed',
+        top: '0',
+        width: '100%',
+        zIndex: '100'
     },
 
     nav: {
@@ -106,44 +116,47 @@ const styles = {
         position: 'relative',
         width: '100%',
         transition: 'transform .25s cubic-bezier(.46, .01, .32,1)',
-        height: '4.4rem',
+        height: '3.5rem',
         display: 'flex',
         justifyContent: 'space-between'
     },
 
     navLinks: {
-        marginRight: '1rem',
         position: 'absolute',
         right: '0',
         display: 'flex',
         height: 'inherit',
         alignItems: 'center',
+        paddingTop: '5px',
         justifyContent: 'flex-end'
     },
 
     title:{
         display: 'flex',
+        paddingTop: '5px',
         flexDirection: 'row',
         alignItems: 'center',
     },
 
     a:{
-        textDecoration: 'none'
+        textDecoration: 'none',
     },
 
     title_h2:{
         fontSize: '2.4em',
         color: 'white',
-        fontWeight: 'bold',
+        fontWeight: '800',
         margin: 0
     },
 
     link: {
-        marginRight: '1.4rem',
+        marginRight: '1rem',
         fontWeight: 'bold',
         color: 'white',
         textDecoration: 'none',
-        fontSize: '1.1rem'
+        fontSize: '1.1rem',
+        display: 'flex',
+        alignItems: 'center'
     },
 
     linkIcon: {
