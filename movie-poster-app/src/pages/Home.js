@@ -24,7 +24,7 @@ const Home = () => {
                 }
               })
     }, []);
-  
+
     if (!poster) return null;
 
     return(
@@ -48,8 +48,20 @@ const Home = () => {
            
             <MiddleNav/>
             <PosterForm />
-            <h2 style={{color:'red'}}>{poster[0].name}</h2>
-            <h2 style={{color:'red'}}>{poster[0].collectionName.name}</h2>
+
+            {poster.length > 0 ? (
+                    poster.map((poster) => {
+                        return (
+                            <div key={poster._id}>
+                            <h2 ><a href={'posters/products/' + poster._id}>{poster.name}</a></h2>
+                            <img src={poster.img} style={styles.imgg} alt={poster.name}></img>
+                            </div>
+                        )
+                    })
+            ) : (
+                    <p>uh oh! No Posters in database</p>
+                )
+            }
         </div>
         <GotMail 
             banner={styles.banner}
@@ -65,6 +77,11 @@ const Home = () => {
 export default Home;
 
 const styles = {
+
+    imgg: {
+        width: '300px'
+    },
+
     main: {
         maxWidth: '1500px',
         margin: 'auto'

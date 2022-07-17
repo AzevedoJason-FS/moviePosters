@@ -18,23 +18,20 @@ const PosterForm = () => {
         description: ''
       });
 
+      const [uploadFile, setUploadFile] = React.useState();
+
       const handleSubmit = async(e) => {
         e.preventDefault();
 
+        const dataArray = new FormData();
+          dataArray.append("formValue", formValue);
+          dataArray.append("uploadFile", uploadFile);
+
         const baseURL = "/posters/upload";
-            axios.post(baseURL, {
-                    name:formValue.name,
-                    img: '',
-                    size:formValue.size,
-                    format:formValue.format,
-                    rolled:formValue.rolled,
-                    year: formValue.year,
-                    original: formValue.original,
-                    collectionName: formValue.collectionName,
-                    price: formValue.price,
-                    inventory: formValue.inventory,
-                    slug: formValue.slug,
-                    description: formValue.description
+            axios.post(baseURL, dataArray,{
+              headers: {
+                "Content-Type": "multipart/form-data"
+              }
               })
                  .then((response) => {
                     console.log(response);
@@ -69,13 +66,13 @@ const PosterForm = () => {
         onChange={handleChange}
       />
       Img
-      {/* <input
+      <input
         className='img'
         type="file"
         name="file"
         placeholder="Image"
-        onChange={handleChange}
-      /> */}
+        onChange={(e) => setUploadFile(e.target.files)}
+      />
       size
       <input
         className='size'
