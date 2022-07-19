@@ -29,6 +29,33 @@ router.get("/", (req, res, next) => {
     });
 });
 
+router.get('/:collectionId', (req,res,next) => {
+    const collectionId = req.params.collectionId;
+    Collection.findById(collectionId)
+    .select("name")
+    .exec()
+    .then(collection => {
+        if(!collection){
+            console.log(collection);
+            return res.status(404).json({
+                message: 'no found'
+            })
+        }
+        res.status(200).json({
+            message: "Collection found",
+            Collection: collection
+        })
+    })
+    .catch(err => {
+        res.status(500).json({
+            error:{
+                message: err.message
+            }
+        })
+    })
+});
+
+
 router.post("/", (req, res, next) => {
 
     Collection.find({
