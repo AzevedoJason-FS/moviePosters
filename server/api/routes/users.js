@@ -2,22 +2,31 @@ const express = require('express');
 const bcrypt = require("bcrypt");
 const mongoose = require('mongoose');
 const router = express.Router();
-const User = require("../models/users")
+const User = require("../models/users");
+const jwt = require('jsonwebtoken');
 const {findUser, saveUser} = require('../../db/db');
+const checkAuth = require('../../auth/checkAuth');
 const user = {};
 
-router.get("/account",(req,res,next) => {
-    res.redirect('/account')
+router.get("/account", checkAuth,(req,res,next) => {
+    res.status(200).json({
+        message: req.userData,
+    })
 });
 
+
 router.post("/login", (req,res,next) => {
-    findUser({email:req.body.email})
+ findUser({email:req.body.email})
         .then(result => {
             if(result.length === 0){
                 return res.status(401).json({
                     message: 'No user found with that email'
                 })
             }
+    const email = req.body.email;
+
+    const token = jwt.sign({email:email}, process.env.jwt_key, {expiresIn: '30s'});
+
     bcrypt.compare(req.body.password, user.password, (err, result) => {
         if(err) return res.status(501).json({message: err.message});
 
@@ -25,6 +34,8 @@ router.post("/login", (req,res,next) => {
                 res.status(200).json({
                     message: "Authorization Successful | Welcome",
                     result: result,
+                    email: email,
+                    token: token,
                 });
             }
             else{
@@ -57,7 +68,7 @@ router.post("/signup", (req,res,next) => {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                password: user.password,
+                password: req.body.password,
             })
         
         //Write to Database
