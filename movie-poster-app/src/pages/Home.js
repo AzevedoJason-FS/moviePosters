@@ -15,14 +15,14 @@ const Home = () => {
 
     React.useEffect(() => {
         axios.get(baseURL)
-             .then((response) => {
+            .then((response) => {
                 setPoster(response.data.Posters.name);
                 console.log(response.data.Posters.name);
-             }).catch(err => {
+            }).catch(err => {
                 if (err.response && err.response.status === 406){
                     console.clear()
                 }
-              })
+            })
     }, []);
 
     if (!poster) return null;
@@ -45,8 +45,7 @@ const Home = () => {
             <Helmet>
                 <style>{"body { background-color: black; }"}</style>
             </Helmet>
-           
-            <MiddleNav/>
+            <MiddleNav />
             <PosterForm />
 
             {poster.length > 0 ? (

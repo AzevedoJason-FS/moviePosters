@@ -1,19 +1,40 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../index";
+import axios from "axios"
 
 const MiddleNav = () => {
+
+    const [collection, setCollection] = React.useState('');
+
+    const baseURLCollection = "/collections";
+
+    React.useEffect(() => {
+        axios.get(baseURLCollection)
+            .then((response) => {
+                setCollection(response.data.Collections.name);
+                console.log(response.data.Collections.name);
+            }).catch(err => {
+                if (err.response && err.response.status === 406){
+                    console.clear()
+                }
+            })  
+    }, [])
+    
     return(
         <nav style={styles.nav}>
             <div className='nav-links-middle' style={styles.navLinks}>
-                <Link to="/original-posters" style={styles.link} className='link'> Suggested</Link>
-                <Link to="/collections" style={styles.link} className='link'> Top Selling</Link>
-                <Link to="/collections" style={styles.link} className='link'> Originals</Link>
-                <Link to="/framing" style={styles.link} className='link'> Action</Link>
-                <Link to="/framing" style={styles.link} className='link'> Horror</Link>
-                <Link to="/framing" style={styles.link} className='link'> Comics</Link>
-                <Link to="/framing" style={styles.link} className='link'> Romance</Link>
-            </div>
+            {collection.length > 0 ? (
+                collection.slice(0, 7).map((collection) => {
+                    return (
+                        <Link to={'collections/' + collection._id} style={styles.link} className='link' key={collection._id}>{collection.name}</Link>
+                    )
+                })
+            ) : (
+                    <p>uh oh! No Collections in database</p>
+                )
+            }
+           </div>
         </nav>
     )
 }

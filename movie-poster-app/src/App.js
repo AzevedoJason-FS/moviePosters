@@ -14,6 +14,7 @@ const App = () => {
           <Route path='/original-posters' element={<OriginalPosters />} />
           <Route path='/collections' element={<Collections />} />
           <Route path='posters/products/:posterId' element={<Products />} />
+          <Route path='collections/:collectionId' element={<Collections />} />
           <Route path='/framing' element={<Framing />} />
           <Route path='/framing' element={<Framing />} />
           <Route path='/login' element={<Login />} />
