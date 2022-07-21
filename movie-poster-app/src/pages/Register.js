@@ -3,9 +3,9 @@ import { Helmet } from 'react-helmet-async';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import GotMail from "../components/GotMail";
-import LoginForm from "../components/forms/LoginForm";
+import SignupForm from "../components/forms/SignupForm";
 
-const Login = () => {
+const Register = () => {
     return(
         <div>
             <Helmet>
@@ -14,8 +14,8 @@ const Login = () => {
             <Nav />
             <div style={styles.main}>
                 <div style={styles.formBox}>
-                    <h2 style={styles.formTitle}>Login</h2>
-                    <LoginForm />
+                    <h2 style={styles.formTitle}>Create Account</h2>
+                    <SignupForm />
                 </div>
             </div>
             <GotMail 
@@ -29,12 +29,12 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Register;
 
 const styles = {
     main: {
         maxWidth: '1500px',
-        margin: '4rem auto 12rem auto',
+        margin: '4rem auto 6rem auto',
         position: 'relative',
         paddingBottom: '60px',
     },

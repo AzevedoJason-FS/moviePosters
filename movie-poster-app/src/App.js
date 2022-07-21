@@ -5,6 +5,7 @@ import Collections from "./pages/Collections";
 import Products from "./pages/Products";
 import Framing from "./pages/Framing";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/framing' element={<Framing />} />
           <Route path='/framing' element={<Framing />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
         </Routes>
     
 

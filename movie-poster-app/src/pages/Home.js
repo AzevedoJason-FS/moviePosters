@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import axios from "axios"
 import Nav from '../components/Nav';
 import MiddleNav from '../components/MiddleNav';
-import PosterForm from '../components/forms/PosterForm';
 import Footer from '../components/Footer';
 import GotMail from "../components/GotMail";
 
@@ -46,7 +45,6 @@ const Home = () => {
                 <style>{"body { background-color: black; }"}</style>
             </Helmet>
             <MiddleNav />
-            <PosterForm />
 
             {poster.length > 0 ? (
                     poster.map((poster) => {

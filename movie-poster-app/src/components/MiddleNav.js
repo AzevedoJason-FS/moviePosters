@@ -7,7 +7,7 @@ const MiddleNav = () => {
 
     const [collection, setCollection] = React.useState('');
 
-    const baseURLCollection = "/collections";
+    const baseURLCollection = "/collections/middle";
 
     React.useEffect(() => {
         axios.get(baseURLCollection)
@@ -25,7 +25,7 @@ const MiddleNav = () => {
         <nav style={styles.nav}>
             <div className='nav-links-middle' style={styles.navLinks}>
             {collection.length > 0 ? (
-                collection.slice(0, 7).map((collection) => {
+                collection.map((collection) => {
                     return (
                         <Link to={'collections/' + collection._id} style={styles.link} className='link' key={collection._id}>{collection.name}</Link>
                     )
