@@ -29,6 +29,35 @@ router.get("/", (req, res, next) => {
     });
 });
 
+//GET only 7 collections for middleNav menu
+router.get("/middle", (req, res, next) => {
+    Collection.find()
+    .lean()
+    .limit(7)
+    .then(result => {
+        console.log(result);
+        res.status(200).json({
+            message: "Collections",
+            Collections: {
+                name: result,
+            metadata:{
+                method: req.method,
+                host: req.hostname
+            }
+            }
+        })
+    })
+    .catch(err => {
+        console.error(err.message);
+        res.status(500).json({
+            error: {
+                message: err.message
+            }
+        })
+    });
+});
+
+//GET collection BY ID
 router.get('/:collectionId', (req,res,next) => {
     const collectionId = req.params.collectionId;
     Collection.findById(collectionId)

@@ -68,7 +68,7 @@ router.post("/signup", (req,res,next) => {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                password: req.body.password,
+                password: user.password,
             })
         
         //Write to Database
@@ -80,7 +80,7 @@ router.post("/signup", (req,res,next) => {
                 User: {
                     firstName: result.firstName,
                     email: result.email,
-                    password: result.password,
+                    password: req.body.password,
                         metadata:{
                             method: req.method,
                             host: req.hostname

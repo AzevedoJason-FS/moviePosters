@@ -57,6 +57,33 @@ router.get("/", (req, res, next) => {
     });
 });
 
+router.get('/collection/:collectionId', (req,res,next) => {
+    const collectionId = req.params.collectionId;
+    Poster.find({"collectionName" :  collectionId})
+    .select("name _id img price year size original_reprint rolled_folded inventory description slug collectionName")
+    .populate("collectionName", "name")
+    .exec()
+    .then(poster => {
+        if(!poster){
+            console.log(poster);
+            return res.status(404).json({
+                message: 'no found'
+            })
+        }
+        res.status(200).json({
+            message: "Poster found",
+            Poster: poster
+        })
+    })
+    .catch(err => {
+        res.status(500).json({
+            error:{
+                message: err.message
+            }
+        })
+    })
+});
+
 router.get('/products/:posterId', (req,res,next) => {
     const posterId = req.params.posterId;
     Poster.findById(posterId)
