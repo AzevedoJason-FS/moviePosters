@@ -6,9 +6,10 @@ const postersSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    img: { 
-        type : String,
-        required: true,
+    img:
+    {
+        data: Buffer,
+        contentType: String
     },
     size: {
         type: String,

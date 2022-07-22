@@ -2,14 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Poster = require("../models/posters");
 const router = express.Router();
+const fs = require('fs');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 
-const DIR = `${__dirname}/../../../server/uploads/`;
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, DIR);
+        cb(null, `/Users/jasonazevedo/Desktop/Portfolio/moviePosters/movie-poster-app/public/images/`);
     },
     filename: (req, file, cb) => {
         const fileName = file.originalname.toLowerCase().split(' ').join('-');
@@ -72,7 +71,7 @@ router.get('/collection/:collectionId', (req,res,next) => {
         }
         res.status(200).json({
             message: "Poster found",
-            Poster: poster
+            Poster: poster,
         })
     })
     .catch(err => {
@@ -99,7 +98,7 @@ router.get('/products/:posterId', (req,res,next) => {
         }
         res.status(200).json({
             message: "Poster found",
-            Poster: poster
+            Poster: poster,
         })
     })
     .catch(err => {
@@ -129,7 +128,10 @@ router.post("/upload", upload.single('img'),(req, res, next) => {
     const newPoster = new Poster({
         _id: mongoose.Types.ObjectId(),
         name: req.body.name,
-        img:  url + '/uploads/' + req.file.filename,
+        img:{  
+            data: fs.readFileSync(`/Users/jasonazevedo/Desktop/Portfolio/moviePosters/movie-poster-app/public/images/` + req.file.filename),
+            contentType: 'image/png',
+        },
         size: req.body.size,
         format: req.body.format,
         rolled_folded: req.body.rolled_folded,

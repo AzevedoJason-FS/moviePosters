@@ -7,6 +7,7 @@ const postersRoutes = require("../api/routes/posters");
 const bodyParser = require('body-parser');
 const usersRoutes = require("../api/routes/users");
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config()
 
 //Middleware for Image Upload
