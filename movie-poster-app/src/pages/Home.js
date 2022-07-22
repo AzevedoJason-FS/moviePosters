@@ -16,7 +16,7 @@ const Home = () => {
         axios.get(baseURL)
             .then((response) => {
                 setPoster(response.data.Posters.name);
-                console.log(response.data.Posters.name);
+                console.log(response.data.Posters.name)
             }).catch(err => {
                 if (err.response && err.response.status === 406){
                     console.clear()
@@ -51,7 +51,7 @@ const Home = () => {
                         return (
                             <div key={poster._id}>
                             <h2 ><a href={'posters/products/' + poster._id}>{poster.name}</a></h2>
-                            <img src={poster.img} style={styles.imgg} alt={poster.name}></img>
+                            <img src={`data:image/jpeg;base64,${poster.img.data}`} alt={poster.name} />
                             </div>
                         )
                     })

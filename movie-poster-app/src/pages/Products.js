@@ -10,6 +10,7 @@ const params = useParams();
     
 const [poster, setPoster] = React.useState([])
 const [posterCollection, setPosterCollection] = React.useState([])
+const [posterImg, setPosterImg] = React.useState();
 
 const baseURL = `/posters/products/${params.posterId}`;
 
@@ -19,18 +20,18 @@ const baseURL = `/posters/products/${params.posterId}`;
             console.log(res.data.Poster)
             setPoster(res.data.Poster)
             setPosterCollection(res.data.Poster.collectionName)
+            setPosterImg(res.data.Poster.img.data.data)
         })
         .catch(err =>{
             console.log(err)
         })
     }, [params.posterId,baseURL])
-
     return(
         <div>
             <Nav />
             <div style={styles.box}>
                 <div>
-                    <img src={poster.img} style={styles.img} alt="img"/>
+                <img src={`data:image/png;base64, ${posterImg}`} style={styles.img} alt="img"/>
                 </div>
                 <div>
                     <p>{poster._id}</p>

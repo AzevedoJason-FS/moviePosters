@@ -31,8 +31,7 @@ const baseURLPoster = `/posters/collection/${params.collectionId}`;
             if (err.response && err.response.status === 406){
                 console.clear()
             }
-        }) 
-      
+        })    
     }, [params.collectionId,baseURL,baseURLPoster])
 
     return(
@@ -43,14 +42,19 @@ const baseURLPoster = `/posters/collection/${params.collectionId}`;
                    <h2>{posterCollection}</h2>
                 </div>
             </div>
-                    {poster.map((poster) => {
+            {poster.length > 0 ? (
+                    poster.map((poster) => {
                         return (
                             <div key={poster._id}>
                             <h2 ><a href={'posters/products/' + poster._id}>{poster.name}</a></h2>
                             <img src={poster.img} style={styles.imgg} alt={poster.name}></img>
                             </div>
                         )
-                    })}
+                    })
+            ) : (
+                    <p>uh oh! No Posters with this collection in database</p>
+                )
+            }
         </div>
         
     )

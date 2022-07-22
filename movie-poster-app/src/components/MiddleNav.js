@@ -13,10 +13,9 @@ const MiddleNav = () => {
         axios.get(baseURLCollection)
             .then((response) => {
                 setCollection(response.data.Collections.name);
-                console.log(response.data.Collections.name);
             }).catch(err => {
                 if (err.response && err.response.status === 406){
-                    console.clear()
+                    console.log(err)
                 }
             })  
     }, [])

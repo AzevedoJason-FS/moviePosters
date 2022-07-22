@@ -9,8 +9,6 @@ const LoginForm = () => {
         email: '',
         password: '',
       });
-    
-    const [loggedIn, setLogin] = React.useState(false)
 
     const handleChange = (e) => {
       setformValue({
@@ -29,8 +27,7 @@ const LoginForm = () => {
         })
             .then((response) => {
                console.log(response.data)
-               setLogin(true)
-               window.location = "/collections/62c7696eb43eac52255bdfe9";
+               window.location = "/account";
             }).catch(err => {
                 if (err.response && err.response.status === 406){
                     console.clear()
