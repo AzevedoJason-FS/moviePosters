@@ -9,8 +9,10 @@ const checkAuth = require('../../auth/checkAuth');
 const user = {};
 
 router.get("/account", checkAuth,(req,res,next) => {
+    req.headers.authorization = 'Bearer ';
     res.status(200).json({
         message: req.userData,
+        welcome: '🙌'
     })
 });
 
@@ -29,7 +31,6 @@ router.post("/login", (req,res,next) => {
 
     bcrypt.compare(req.body.password, user.password, (err, result) => {
         if(err) return res.status(501).json({message: err.message});
-
             if(result){
                 res.status(200).json({
                     message: "Authorization Successful | Welcome",

@@ -7,7 +7,7 @@ const postersRoutes = require("../api/routes/posters");
 const bodyParser = require('body-parser');
 const usersRoutes = require("../api/routes/users");
 const cors = require('cors');
-const path = require('path');
+const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
 //Middleware for Image Upload
@@ -33,6 +33,9 @@ res.status(201).json({
     method: req.method
 })
 });
+
+//Middleware Cookies
+app.use(cookieParser());
 
 app.use("/collections", collectionsRoutes);
 app.use("/posters", postersRoutes)

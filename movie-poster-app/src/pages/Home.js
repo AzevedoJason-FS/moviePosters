@@ -16,7 +16,7 @@ const Home = () => {
         axios.get(baseURL)
             .then((response) => {
                 setPoster(response.data.Posters.name);
-                console.log(response.data.Posters.name)
+                console.log(response.data)
             }).catch(err => {
                 if (err.response && err.response.status === 406){
                     console.clear()
